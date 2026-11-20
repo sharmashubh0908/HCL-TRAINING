@@ -86,7 +86,14 @@ High Usage share by city
 
 Recommendations Target the High Usage households (large homes with heavy AC use) with energy-saving advice, such as AC maintenance, better settings and efficient appliances. Promote rooftop solar, especially for Independent Houses and for households in Kolkata and Mumbai, because households with solar use less electricity from the grid. Plan supply for hot periods and larger homes, since AC hours and home area are the two strongest drivers of consumption. Review the tariff design: the tariff plans show little difference in consumption here, so they are unlikely to be the main way to reduce high usage.
 Limitations The dataset is synthetic, so the results show patterns in this data only and not in real households. The dataset is small (250 households); some groups are small (for example, 25 households in Kolkata), so group differences should be read with care. A correlation shows that two columns move together; it does not prove that one causes the other.
-Project Structure household-electricity-consumption/ ├── data/ │ ├── raw/ electricity_data.csv │ └── processed/ electricity_data_clean.csv ├── notebooks/ cleaning, new columns and analysis code ├── images/ charts (PNG files) ├── documents/ SRS document └── README.md
+Project Structure household-electricity-consumption/
+├── data/ │
+      ├── raw/ electricity_data.csv │
+      └── processed/ electricity_data_clean.csv
+├── notebooks/ cleaning, new columns and analysis code 
+├── images/ charts (PNG files)
+├── documents/ SRS document
+└── README.md
 How to Run
 Run these from the notebooks folder, in this order:
 
