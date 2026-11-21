@@ -7,17 +7,29 @@ A regional electricity distribution company sees that monthly electricity use di
 
 This analysis helps the company to plan electricity supply, design tariffs, and find high-usage households that can be offered energy-saving advice or solar schemes.
 
-The Four Questions What does Monthly_Consumption_kWh look like overall (typical value, spread and extremes)? Do AC_Hours_Per_Day and Home_Area_Sqft affect Monthly_Consumption_kWh? Does Monthly_Consumption_kWh differ by City, Property_Type, Tariff_Plan and Has_Solar? Which households need attention? A household is labelled High Usage when Monthly_Consumption_kWh is above 350 kWh.
-Dataset Item Value File electricity_data.csv (in data/raw) Rows / columns (raw) 255 rows, 12 columns Rows / columns (after cleaning) 250 rows, 12 columns (15 after adding the new columns) Outcome column Monthly_Consumption_kWh Source Synthetic data created with an AI tool (Claude by Anthropic)
-Each row is the electricity use of one household for one billing month. The dataset has no names, phone numbers or e-mail addresses.
+The Four Questions
+What does Monthly_Consumption_kWh look like overall (typical value, spread and extremes)?
 
+Do AC_Hours_Per_Day and Home_Area_Sqft affect Monthly_Consumption_kWh?
+
+Does Monthly_Consumption_kWh differ by City, Property_Type, Tariff_Plan and Has_Solar?
+
+Which households need attention? A household is labelled High Usage when Monthly_Consumption_kWh is above 350 kWh.
+
+Dataset Item Value File electricity_data.csv (in data/raw) Rows / columns (raw) 255 rows, 12 columns Rows / columns (after cleaning) 250 rows, 12 columns (15 after adding the new columns) Outcome column Monthly_Consumption_kWh Source Synthetic data created with an AI tool (Claude by Anthropic)
+Each row is the electricity use of one household for one billing month.
+
+The dataset has no names, phone numbers or e-mail addresses.
 Columns: Household_ID, City, Property_Type, Tariff_Plan, Has_Solar, Household_Size, Home_Area_Sqft, AC_Hours_Per_Day, Avg_Temperature_C, Appliance_Age_Years, Reading_Date, Monthly_Consumption_kWh.
 
 Data Cleaning Column Problem found How many How it was fixed All columns Duplicate rows 5 Removed with drop_duplicates() Home_Area_Sqft Missing values 5 Filled with the median of the same Property_Type Tariff_Plan Missing values 4 Filled with the most common value (Standard) Avg_Temperature_C Missing values 5 Filled with the median Appliance_Age_Years Missing values 6 Filled with the median City Inconsistent text (spaces, upper/lower case) 7 Extra spaces removed, spelling made the same AC_Hours_Per_Day Impossible values (above 24 or negative) 2 Replaced with the median
 After cleaning: 250 rows, no missing values, no duplicate rows.
 
 New Columns Column How it is calculated Usage_Per_Sqft Monthly_Consumption_kWh / Home_Area_Sqft Usage_Status "High Usage" if Monthly_Consumption_kWh is above 350, otherwise "Normal" AC_Usage_Band AC_Hours_Per_Day grouped into Low (0-3), Medium (3-7) and Heavy (7+)
-Findings Question 1: What does the consumption look like overall? Statistic Value (kWh) Households (count) 250 Mean 245.8 Standard deviation 82.4 Minimum 58.0 25th percentile 190.2 Median 240.0 75th percentile 300.2 Maximum 529.0
+Findings
+
+Question 1: What does the consumption look like overall? 
+Statistic Value (kWh) Households (count) 250 Mean 245.8 Standard deviation 82.4 Minimum 58.0 25th percentile 190.2 Median 240.0 75th percentile 300.2 Maximum 529.0
 The mean (245.8 kWh) and the median (240.0 kWh) are close, and the skewness is only 0.28, so the distribution is nearly symmetric with a slight tail towards high values. A typical household uses about 240 kWh per month, and most households fall between 190 and 300 kWh.
 
 Distribution of monthly consumption
